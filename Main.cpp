@@ -14,9 +14,10 @@ void showMenu() {
     std::cout << " 4. [TP1] Truy van Hoa don & Doi/Tra hang 3 ngay (Hash Table)\n";
     std::cout << " 5. [TP2] Xem Bang xep hang Top san pham ban chay (Max-Heap)\n";
     std::cout << " 6. [TP3] Canh bao san pham Dong von / Cham luan chuyen (Min-Heap)\n";
+    std::cout << " 7. [XUNG DOT] Demo TP2 <-> TP3 (Dual-Heap)\n";
     std::cout << " 0. Thoat chuong trinh\n";
     std::cout << "--------------------------------------------------------\n";
-    std::cout << " Chon thao tac (0-6): ";
+    std::cout << " Chon thao tac (0-7): ";
 }
 
 int main() {
@@ -128,48 +129,38 @@ int main() {
                 sys.displayTopSelling(k);
                 break;
             }
-            case 6: { // TP3
-                std::cout << "\n--- [THAO TAC 6 - TP3] SAN PHAM DONG VON / CHAM LUAN CHUYEN (INDEXED MIN-HEAP) ---\n";
-                std::cout << "Nhap K: "; int k; std::cin >> k;
-                sys.displayStagnantInventory(k);
-                break;
+                       case 6: { // TP3 
+                std::cout << "\n--- [THAO TAC 6 - TP3] SAN PHAM DONG VON / CHAM LUAN CHUYEN (INDEXED MIN-HEAP) ---\n"; 
+                std::cout << "Nhap K: "; 
+                int k; 
+                std::cin >> k; 
+                sys.displayStagnantInventory(k); 
+                break; 
             }
-            case 0:
-                std::cout << "\n[THONG BAO] Tam biet!\n";
-                break;
-        }
-      
-            //  CASE 7 - XUNG DOT TP2 <-> TP3
 
-            case 7: {
-                std::cout<< "\n--- [THAO TAC 7 - DEMO XUNG DOT " << "TP2 <-> TP3] ---\n";               
+            case 7: { // XUNG DOT TP2 <-> TP3
+                std::cout << "\n--- [THAO TAC 7 - DEMO XUNG DOT TP2 <-> TP3] ---\n";
 
                 std::string key;
                 std::string date;
-
                 int qty;
 
-                std::cout<< "Nhap Barcode hoac SKU: ";                    
-
+                std::cout << "Nhap Barcode hoac SKU: ";
                 std::cin >> key;
 
                 std::cout << "Nhap So luong ban    : ";
-                   
                 std::cin >> qty;
 
-                std::cout  << "Nhap Ngay ban (YYYY-MM-DD): ";
-                  
+                std::cout << "Nhap Ngay ban (YYYY-MM-DD): ";
                 std::cin >> date;
 
-                sys.demonstrateConflict(key, qty,date);
+                sys.demonstrateConflict(key, qty, date);
 
                 break;
             }
 
             case 0: {
-
-                std::cout<< "\n[THONG BAO] Tam biet!\n";   
-
+                std::cout << "\n[THONG BAO] Tam biet!\n";
                 break;
             }
         }
@@ -177,4 +168,3 @@ int main() {
 
     return 0;
 }
-

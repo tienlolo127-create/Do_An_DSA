@@ -276,3 +276,106 @@ void SystemManager::displayStagnantInventory(int k) {
         }
     }
 }
+// ================================================================
+//  [THAO TAC 7]
+// DEMO XUNG DOT TP2-TP3
+// ================================================================
+
+void SystemManager::demonstrateConflict(
+    const std::string& key,
+    int quantity,
+    const std::string& date) {
+
+    Product* p =earchByBarcode(key);
+
+    if (!p)
+        p = searchBySKU(key);
+
+    if (!p) {
+
+        std::cout
+            << " [LOI] Khong tim thay san pham!\n";
+
+        return;
+    }
+
+    std::cout<< " DEMO XUNG DOT TP2 <-> TP3 (INDEXED DUAL-HEAP)   \n";
+
+    std::cout << " San pham: "<< p->name<< " [" << p->productID<< "]\n";
+    
+    std::cout << "\n>> TRUOC khi ban:\n";
+
+    std::cout<< "   - totalSoldQuantity (TP2 key): "<< p->totalSoldQuantity << "\n";
+
+    std::cout<< "   - lastSoldDate      (TP3 key): "<< p->lastSoldDate<< "\n";
+
+    std::cout<< "   - maxHeapIndex (vi tri trong Max-Heap): "<< p->maxHeapIndex << "\n";
+
+    std::cout<< "   - minHeapIndex (vi tri trong Min-Heap): "<< p->minHeapIndex << "\n";
+
+    if (p->stockQuantity <quantity) {
+
+        std::cout<< " [LOI] Ton kho khong du!\n";
+
+        return;
+    }
+
+    std::cout<< "\n>> Thuc hien su kien: ban "<< quantity<< " san pham ngay "<< date<< "\n";
+
+    p->stockQuantity -=quantity;
+
+    p->totalSoldQuantity +=quantity;
+
+    p->lastSoldDate =date;
+
+    std::cout<< "\n  Cung mot su kien -> 2 field deu thay doi:\n";
+
+    std::cout<< "     - totalSoldQuantity: tang "<< quantity<< "\n";
+
+    std::cout<< "     - lastSoldDate     : doi thanh " << date << "\n";
+
+    syncBothHeapsAfterSale(p);
+
+    std::cout<< "\n>> SAU khi dong bo (syncBothHeapsAfterSale):\n";
+
+    std::cout<< "   - maxHeapIndex (vi tri moi trong Max-Heap): "<< p->maxHeapIndex<< "\n";
+
+    std::cout<< "   - minHeapIndex (vi tri moi trong Min-Heap): "<< p->minHeapIndex<< "\n";
+
+    std::cout<< "\n [OK] CA 2 HEAP da cap nhat vi tri cua san pham.\n";
+
+    std::cout<< "      -> Neu chi update 1 heap, san pham se bi 'lac' vi tri.\n";
+
+    std::cout<< "\n>> Kiem tra nhat quan 2 heap: ";
+
+    if (verifyHeapConsistency()) 
+        std::cout << "PASS\n";
+
+    else
+        std::cout<< "FAIL\n";
+
+}
+
+bool SystemManager::verifyHeapConsistency() {
+
+    if (maxHeapSales.size() !=masterInventory.size()) 
+        return false;
+    
+    if (minHeapUnsold.size() !=masterInventory.size()) 
+        return false;
+
+    for (Product* p :
+         masterInventory) {
+
+        if (!p)
+            continue;
+
+        if (p->maxHeapIndex < 0 || p->maxHeapIndex >=static_cast<int>(maxHeapSales.size())) 
+            return false;
+
+        if (p->minHeapIndex < 0 ||p->minHeapIndex >=static_cast<int>(minHeapUnsold.size())) 
+            return false;
+    }
+    }
+    return true;
+}

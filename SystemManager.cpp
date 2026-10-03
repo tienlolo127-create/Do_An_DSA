@@ -286,7 +286,10 @@ void SystemManager::demonstrateConflict(
     int quantity,
     const std::string& date) {
 
-    Product* p =searchByBarcode(key);
+    maxHeapUpdateCount = 0;
+    minHeapUpdateCount = 0;
+
+    Product* p = searchByBarcode(key);
 
     if (!p)
         p = searchBySKU(key);
@@ -341,6 +344,12 @@ void SystemManager::demonstrateConflict(
     std::cout<< "   - maxHeapIndex (vi tri moi trong Max-Heap): "<< p->maxHeapIndex<< "\n";
 
     std::cout<< "   - minHeapIndex (vi tri moi trong Min-Heap): "<< p->minHeapIndex<< "\n";
+    
+    std::cout << "\n>> KET QUA DONG BO:\n";
+
+    std::cout << "  Max-Heap TP2 da cap nhat: "<< maxHeapUpdateCount << " lan\n";
+
+    std::cout << "  Min-Heap TP3 da cap nhat: " << minHeapUpdateCount << " lan\n";
 
     std::cout<< "\n [OK] CA 2 HEAP da cap nhat vi tri cua san pham.\n";
 

@@ -290,7 +290,15 @@ void SystemManager::syncBothHeapsAfterSale(Product* p) {
     minHeapUnsold.updateItem(p);
     minHeapUpdateCount++;
 }
+void SystemManager::demonstrateConflict(
+    const std::string& key,
+    int quantity,
+    const std::string& date) {
 
+    maxHeapUpdateCount = 0;
+    minHeapUpdateCount = 0;
+
+    Product* p = searchByBarcode(key);
     if (!p)
         p = searchBySKU(key);
 

@@ -281,15 +281,15 @@ void SystemManager::displayStagnantInventory(int k) {
 // DEMO XUNG DOT TP2-TP3
 // ================================================================
 
-void SystemManager::demonstrateConflict(
-    const std::string& key,
-    int quantity,
-    const std::string& date) {
+void SystemManager::syncBothHeapsAfterSale(Product* p) {
+    if (!p) return;
 
-    maxHeapUpdateCount = 0;
-    minHeapUpdateCount = 0;
+    maxHeapSales.updateItem(p);
+    maxHeapUpdateCount++;
 
-    Product* p = searchByBarcode(key);
+    minHeapUnsold.updateItem(p);
+    minHeapUpdateCount++;
+}
 
     if (!p)
         p = searchBySKU(key);

@@ -385,6 +385,5 @@ bool SystemManager::verifyHeapConsistency() {
         if (p->minHeapIndex < 0 ||p->minHeapIndex >=static_cast<int>(minHeapUnsold.size())) 
             return false;
     }
-    }
     return true;
 }

@@ -286,7 +286,7 @@ void SystemManager::demonstrateConflict(
     int quantity,
     const std::string& date) {
 
-    Product* p =earchByBarcode(key);
+    Product* p =searchByBarcode(key);
 
     if (!p)
         p = searchBySKU(key);

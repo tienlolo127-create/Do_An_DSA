@@ -1,0 +1,5 @@
+barcode,sku,name,price,stockQuantity,shelfLocation
+8935001234567,SKU-SNACK-001,Banh Oishi Tom Cay 80g,12000,150,Ke A1-02
+8934567890123,SKU-MILK-102,Sua Tuoi Vinamilk Co Duong 1L,38000,42,Ke B2-05
+8936001122334,SKU-COKE-330,Nuoc Ngot Coca Cola Lon 330ml,10000,300,Ke A3-01
+8935001999999,SKU-NOODLE-05,Mi Hao Hao Tom Chua Cay,4500,500,Ke A1-01

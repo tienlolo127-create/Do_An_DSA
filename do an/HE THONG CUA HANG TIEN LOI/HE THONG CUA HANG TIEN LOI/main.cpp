@@ -102,14 +102,14 @@ int main() {
 
                 if (subChoice == 1) {
                     std::string invID;
-                    std::cout << "Nhap Ma Hoa don (VD: BILL12345): "; std::cin >> invID;
+                    std::cout << "Nhap Ma Hoa don: "; std::cin >> invID;
                     Invoice inv;
                     sys.queryInvoice(invID, true, inv);
                 } else if (subChoice == 2) {
                     std::string invID, prodID, type;
                     int qty;
-                    std::cout << "Nhap Ma Hoa don (VD: BILL12345): "; std::cin >> invID;
-                    std::cout << "Nhap Ma San pham trong Bill (VD: P001): "; std::cin >> prodID;
+                    std::cout << "Nhap Ma Hoa don: "; std::cin >> invID;
+                    std::cout << "Nhap Ma San pham trong Bill: "; std::cin >> prodID;
                     std::cout << "Loai yeu cau (Refund/Exchange): "; std::cin >> type;
                     std::cout << "So luong tra: "; std::cin >> qty;
 

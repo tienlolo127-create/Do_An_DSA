@@ -6,17 +6,16 @@
 
 void showMenu() {
     std::cout << "\n========================================================\n";
-    std::cout << "  HE THONG QUAN LY CUA HANG TIEN LOI (DSA CORE SYSTEM)  \n";
+    std::cout << "         HE THONG QUAN LY CUA HANG TIEN LOI 714  \n";
     std::cout << "========================================================\n";
-    std::cout << " 1. [BAN HANG MOI] Cap nhat giao dich & Position Map (Heap)\n";
-    std::cout << " 2. [MC1] Tra cuu san pham theo Barcode hoac SKU (Hash Table)\n";
-    std::cout << " 3. [MC2] Duyet san pham theo Khoang gia & SP Ton kho thap nhat (STL)\n";
-    std::cout << " 4. [TP1] Truy van Hoa don & Doi/Tra hang 3 ngay (Hash Table)\n";
-    std::cout << " 5. [TP2] Xem Bang xep hang Top san pham ban chay (Max-Heap)\n";
-    std::cout << " 6. [TP3] Canh bao san pham Dong von / Cham luan chuyen (Min-Heap)\n";
+    std::cout << " 1. [MC1] Tra cuu san pham theo Barcode hoac SKU \n";
+    std::cout << " 2. [MC2] Duyet san pham theo Khoang gia & SP Ton kho thap nhat\n";
+    std::cout << " 3. [TP1] Truy van Hoa don & Doi/Tra hang 3 ngay \n";
+    std::cout << " 4. [TP2] Xem Bang xep hang Top san pham ban chay \n";
+    std::cout << " 5. [TP3] Canh bao san pham Dong von / Cham luan chuyen \n";
     std::cout << " 0. Thoat chuong trinh\n";
     std::cout << "--------------------------------------------------------\n";
-    std::cout << " Chon thao tac (0-6): ";
+    std::cout << " Chon thao tac (0, 1-5): ";
 }
 
 int main() {
@@ -36,15 +35,6 @@ int main() {
         }
 
         switch (choice) {
-            case 1: { // Sale
-                std::cout << "\n--- [THAO TAC 1 - BAN HANG MOI] CAP NHAT GIAO DICH & POSITION MAP ---\n";
-                std::string key, date; int qty;
-                std::cout << "Nhap Barcode hoac SKU: "; std::cin >> key;
-                std::cout << "Nhap So luong ban: "; std::cin >> qty;
-                std::cout << "Nhap Ngay ban (YYYY-MM-DD): "; std::cin >> date;
-                sys.processNewSale(key, qty, date);
-                break;
-            }
             case 2: { // MC1
                 std::cout << "\n--- [THAO TAC 2 - MC1] TRA CUU SAN PHAM (CUSTOM HASH TABLE) ---\n";
                 std::cout << "Nhap Ma vach (Barcode) hoac SKU/ProductID: ";

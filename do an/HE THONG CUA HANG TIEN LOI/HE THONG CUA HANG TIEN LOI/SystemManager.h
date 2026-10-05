@@ -27,9 +27,6 @@ public:
 
     bool initializeData(const std::string& productsFile, const std::string& invoicesFile);
 
-    // [THAO TAC 1] BAN HANG MOI & CAP NHAT COMPOSITION (Section 5.4)
-    bool processNewSale(const std::string& key, int quantity, const std::string& currentDate);
-
     // [THAO TAC 2 - MC1] TRA CUU CHINH XAC (Custom Hash Table O(1))
     Product* searchByBarcode(const std::string& barcode);
     Product* searchBySKU(const std::string& sku);

@@ -38,40 +38,8 @@ bool SystemManager::initializeData(const std::string& productsFile, const std::s
 
     return pOk || iOk;
 }
-
 // =============================================================================
-// [THAO TAC 1] BAN HANG MOI & CAP NHAT COMPOSITION (Section 5.4)
-// =============================================================================
-bool SystemManager::processNewSale(const std::string& key, int quantity, const std::string& currentDate) {
-    Product* p = searchByBarcode(key);
-    if (!p) p = searchBySKU(key);
-
-    if (!p) {
-        std::cout << " [LOI] Khong tim thay san pham!\n";
-        return false;
-    }
-    if (p->stockQuantity < quantity) {
-        std::cout << " [LOI] Ton kho khong du!\n";
-        return false;
-    }
-
-    p->stockQuantity -= quantity;
-    p->totalSoldQuantity += quantity;
-    p->lastSoldDate = currentDate;
-
-    maxHeapSales.updateItem(p);
-    minHeapUnsold.updateItem(p);
-
-    // [CẬP NHẬT BỀN VỮNG XUỐNG FILE PRODUCTS.CSV]
-    saveProductsCSV(productsCsvFile, masterInventory);
-
-    std::cout << " [THANH CONG] Da ban " << quantity << " x " << p->name 
-              << " | Thanh tien: " << std::fixed << std::setprecision(0) << (quantity * p->price) << " VND\n";
-    return true;
-}
-
-// =============================================================================
-// [THAO TAC 2 - MC1] TRA CUU CHINH XAC QUY MO LON (Custom Hash Table O(1))
+// [THAO TAC 1 - MC1] TRA CUU CHINH XAC QUY MO LON (Custom Hash Table O(1))
 // =============================================================================
 Product* SystemManager::searchByBarcode(const std::string& barcode) {
     Product* p = nullptr;
@@ -86,7 +54,7 @@ Product* SystemManager::searchBySKU(const std::string& sku) {
 }
 
 // =============================================================================
-// [THAO TAC 3 - MC2] TRUY XUAT THEO KHOANG GIA & DUY NHAT 1 SP TON KHO THAP NHAT
+// [THAO TAC 2 - MC2] TRUY XUAT THEO KHOANG GIA & DUY NHAT 1 SP TON KHO THAP NHAT
 // =============================================================================
 std::vector<Product*> SystemManager::getProductsByPriceRange(double minPrice, double maxPrice) {
     if (minPrice > maxPrice) {
@@ -120,7 +88,7 @@ Product* SystemManager::getSingleLowestStockProduct() {
 }
 
 // =============================================================================
-// [THAO TAC 4 - TP1] TRA CUU HOA DON & XU LY DOI/TRA HANG TRONG 3 NGAY (Custom Hash Table O(1))
+// [THAO TAC 3 - TP1] TRA CUU HOA DON & XU LY DOI/TRA HANG TRONG 3 NGAY (Custom Hash Table O(1))
 // =============================================================================
 bool SystemManager::queryInvoice(const std::string& invoiceID, bool hasPermission, Invoice& result) {
     std::cout << "\n--- TRUY VAN HOA DON (TP1) ---" << std::endl;
@@ -244,7 +212,7 @@ bool SystemManager::processReturnExchange(const std::string& invoiceID, const st
 }
 
 // =============================================================================
-// [THAO TAC 5 - TP2] MAT HANG BAN CHAY NHAT (Custom Binary Max-Heap O(1) top)
+// [THAO TAC 4 - TP2] MAT HANG BAN CHAY NHAT (Custom Binary Max-Heap O(1) top)
 // =============================================================================
 void SystemManager::displayTopSelling(int k) {
     std::cout << "\n========================================================\n";
@@ -263,7 +231,7 @@ void SystemManager::displayTopSelling(int k) {
 }
 
 // =============================================================================
-// [THAO TAC 6 - TP3] HANG DONG VON / CHAM LUAN CHUYEN (Custom Binary Min-Heap O(1) top)
+// [THAO TAC 5 - TP3] HANG DONG VON / CHAM LUAN CHUYEN (Custom Binary Min-Heap O(1) top)
 // =============================================================================
 void SystemManager::displayStagnantInventory(int k) {
     std::cout << "\n========================================================\n";

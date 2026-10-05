@@ -6,7 +6,7 @@
 
 void showMenu() {
     std::cout << "\n========================================================\n";
-    std::cout << "  HE THONG QUAN LY CUA HANG TAP HOA (DSA CORE SYSTEM)  \n";
+    std::cout << "  HE THONG QUAN LY CUA HANG TIEN LOI (DSA CORE SYSTEM)  \n";
     std::cout << "========================================================\n";
     std::cout << " 1. [BAN HANG MOI] Cap nhat giao dich & Position Map (Heap)\n";
     std::cout << " 2. [MC1] Tra cuu san pham theo Barcode hoac SKU (Hash Table)\n";

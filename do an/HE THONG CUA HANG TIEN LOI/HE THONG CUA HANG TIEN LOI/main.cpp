@@ -35,7 +35,7 @@ int main() {
         }
 
         switch (choice) {
-            case 2: { // MC1
+            case 1: { // MC1
                 std::cout << "\n--- [THAO TAC 2 - MC1] TRA CUU SAN PHAM (CUSTOM HASH TABLE) ---\n";
                 std::cout << "Nhap Ma vach (Barcode) hoac SKU/ProductID: ";
                 std::string key;
@@ -48,7 +48,7 @@ int main() {
                 else std::cout << " [LOI] Khong tim thay san pham!\n";
                 break;
             }
-            case 3: { // MC2
+            case 2: { // MC2
                 std::cout << "\n--- [THAO TAC 3 - MC2] TRUY XUAT THEO KHOANG GIA & TON KHO THAP NHAT ---\n";
                 std::cout << "1. Loc theo Khoang gia (Price Range)\n";
                 std::cout << "2. Tim san pham co so luong ton kho thap nhat (Duy nhat 1 SP)\n";
@@ -85,7 +85,7 @@ int main() {
                 }
                 break;
             }
-            case 4: { // TP1
+            case 3: { // TP1
                 std::cout << "\n--- [THAO TAC 4 - TP1] QUAN LY HOA DON & DOI/TRA HANG 3 NGAY (CUSTOM HASH TABLE) ---\n";
                 std::cout << "1. Truy van Hoa don (Query Invoice)\n2. Thuc hien Doi/Tra hang (Return/Exchange)\nChon (1-2): ";
                 int subChoice; std::cin >> subChoice;
@@ -110,13 +110,13 @@ int main() {
                 }
                 break;
             }
-            case 5: { // TP2
+            case 4: { // TP2
                 std::cout << "\n--- [THAO TAC 5 - TP2] TOP SAN PHAM BAN CHAY NHAT (INDEXED MAX-HEAP) ---\n";
                 std::cout << "Nhap K: "; int k; std::cin >> k;
                 sys.displayTopSelling(k);
                 break;
             }
-            case 6: { // TP3
+            case 5: { // TP3
                 std::cout << "\n--- [THAO TAC 6 - TP3] SAN PHAM DONG VON / CHAM LUAN CHUYEN (INDEXED MIN-HEAP) ---\n";
                 std::cout << "Nhap K: "; int k; std::cin >> k;
                 sys.displayStagnantInventory(k);

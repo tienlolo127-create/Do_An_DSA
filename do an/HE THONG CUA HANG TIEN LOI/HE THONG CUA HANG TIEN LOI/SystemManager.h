@@ -41,7 +41,6 @@ public:
     // [THAO TAC 4 - TP1] TRUY VAN HOA DON & DOI/TRA HANG TRONG 3 NGAY (Custom Hash Table O(1))
     bool queryInvoice(const std::string& invoiceID, bool hasPermission, Invoice& result);
     bool processReturnExchange(const std::string& invoiceID, const std::string& productID, const std::string& requestType, int returnQty);
-    void printAllInvoices();
 
     // [THAO TAC 5 - TP2] TOP BAN CHAY NHAT (Custom Binary Max-Heap O(1) top)
     void displayTopSelling(int k);

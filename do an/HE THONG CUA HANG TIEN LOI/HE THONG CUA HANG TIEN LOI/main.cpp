@@ -97,19 +97,19 @@ int main() {
             }
             case 4: { // TP1
                 std::cout << "\n--- [THAO TAC 4 - TP1] QUAN LY HOA DON & DOI/TRA HANG 3 NGAY (CUSTOM HASH TABLE) ---\n";
-                std::cout << "1. Truy van Hoa don (Query Invoice)\n2. Thuc hien Doi/Tra hang (Return/Exchange)\n3. Xem tat ca Hoa don trong RAM\nChon (1-3): ";
+                std::cout << "1. Truy van Hoa don (Query Invoice)\n2. Thuc hien Doi/Tra hang (Return/Exchange)\nChon (1-2): ";
                 int subChoice; std::cin >> subChoice;
 
                 if (subChoice == 1) {
                     std::string invID;
-                    std::cout << "Nhap Ma Hoa don: "; std::cin >> invID;
+                    std::cout << "Nhap Ma Hoa don (VD: BILL12345): "; std::cin >> invID;
                     Invoice inv;
                     sys.queryInvoice(invID, true, inv);
                 } else if (subChoice == 2) {
                     std::string invID, prodID, type;
                     int qty;
-                    std::cout << "Nhap Ma Hoa don: "; std::cin >> invID;
-                    std::cout << "Nhap Ma San pham trong Bill: "; std::cin >> prodID;
+                    std::cout << "Nhap Ma Hoa don (VD: BILL12345): "; std::cin >> invID;
+                    std::cout << "Nhap Ma San pham trong Bill (VD: P001): "; std::cin >> prodID;
                     std::cout << "Loai yeu cau (Refund/Exchange): "; std::cin >> type;
                     std::cout << "So luong tra: "; std::cin >> qty;
 
@@ -117,8 +117,6 @@ int main() {
                     if (sys.queryInvoice(invID, true, inv)) {
                         sys.processReturnExchange(invID, prodID, type, qty);
                     }
-                } else if (subChoice == 3) {
-                    sys.printAllInvoices();
                 }
                 break;
             }

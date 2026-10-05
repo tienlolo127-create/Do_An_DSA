@@ -9,7 +9,7 @@
 SystemManager::SystemManager() 
     : barcodeTable(101, 0.75f), skuTable(101, 0.75f), invoiceDB(101, 0.75f),
       maxHeapSales(true), minHeapUnsold(false), 
-      invoiceCsvFile("invoices.csv"), productsCsvFile("products.csv") {} // <-- CẬP NHẬT
+      invoiceCsvFile("invoices.csv"), productsCsvFile("products.csv") {}
 
 SystemManager::~SystemManager() {
     for (Product* p : masterInventory) delete p;
@@ -17,7 +17,7 @@ SystemManager::~SystemManager() {
 }
 
 bool SystemManager::initializeData(const std::string& productsFile, const std::string& invoicesFile) {
-    productsCsvFile = productsFile; // <-- CẬP NHẬT
+    productsCsvFile = productsFile;
     invoiceCsvFile = invoicesFile;
     bool pOk = loadMasterCSV(productsFile, masterInventory);
     bool iOk = loadInvoicesCSV(invoicesFile, invoiceDB);
@@ -241,22 +241,6 @@ bool SystemManager::processReturnExchange(const std::string& invoiceID, const st
     std::cout << "So tien hoan lai: " << std::fixed << std::setprecision(0) << totalRefund << " VND" << std::endl;
     std::cout << "Tong tien hoa don sau khi cap nhat: " << std::fixed << std::setprecision(0) << inv.total_paid << " VND" << std::endl;
     return true;
-}
-
-void SystemManager::printAllInvoices() {
-    std::cout << "\n========================================================\n";
-    std::cout << "      DANH SACH TAT CA HOA DON DANG LUU TRONG RAM       \n";
-    std::cout << "========================================================\n";
-    std::vector<Invoice> allInvoices = invoiceDB.getAllValues();
-    if (allInvoices.empty()) {
-        std::cout << " Chua co hoa don nao.\n";
-        return;
-    }
-    for (const auto& inv : allInvoices) {
-        std::cout << " BillID: " << inv.invoiceID 
-                  << " | Tong tien: " << std::fixed << std::setprecision(0) << inv.total_paid 
-                  << " VND | So mon: " << inv.products.size() << "\n";
-    }
 }
 
 // =============================================================================
